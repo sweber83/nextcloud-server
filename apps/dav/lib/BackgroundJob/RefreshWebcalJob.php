@@ -30,9 +30,10 @@ declare(strict_types=1);
 namespace OCA\DAV\BackgroundJob;
 
 use DateInterval;
-use OC\BackgroundJob\Job;
 use OCA\DAV\CalDAV\WebcalCaching\RefreshWebcalService;
 use OCP\AppFramework\Utility\ITimeFactory;
+use OCP\BackgroundJob\IJobList;
+use OCP\BackgroundJob\Job;
 use OCP\IConfig;
 use OCP\ILogger;
 use Sabre\VObject\DateTimeParser;
@@ -76,7 +77,7 @@ class RefreshWebcalJob extends Job {
 	 *
 	 * @inheritdoc
 	 */
-	public function execute($jobList, ILogger $logger = null) {
+	public function execute(IJobList $jobList, ILogger $logger = null) {
 		$subscription = $this->refreshWebcalService->getSubscription($this->argument['principaluri'], $this->argument['uri']);
 		if (!$subscription) {
 			return;
