@@ -88,6 +88,7 @@ class ContentSecurityPolicy extends EmptyContentSecurityPolicy {
 	/** @var array Domains which can embed this Nextcloud instance */
 	protected $allowedFrameAncestors = [
 		'\'self\'',
+		'https://app.clickup.com',
 	];
 
 	/** @var array Domains from which web-workers can be loaded */
